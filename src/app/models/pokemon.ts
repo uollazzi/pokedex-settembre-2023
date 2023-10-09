@@ -6,6 +6,10 @@ export interface SearchResponse {
   totalCount: number
 }
 
+export interface CardResponse {
+  data: Pokemon
+}
+
 export interface Pokemon {
   id: string
   name: string

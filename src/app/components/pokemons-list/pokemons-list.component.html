@@ -1,8 +1,8 @@
 <mat-list>
-  <mat-list-item *ngFor="let p of pokemons">
+  <a mat-list-item *ngFor="let p of pokemons" [routerLink]="['/pokemons', p.id]">
     <span matListItemTitle>{{p.name}}</span>
     <span>{{p.types[0]}}</span>
-  </mat-list-item>
+  </a>
 </mat-list>
 <button mat-flat-button color="accent" (click)="search()">Carica di più</button>
 
