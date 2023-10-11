@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
 import { CardResponse, Pokemon, SearchResponse } from '../models/pokemon';
 import { environment } from 'src/environments/environment';
+import { gestisciErrore } from './utilities';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class PokemonsService {
     // GET https://api.pokemontcg.io/v2/cards?pageSize=20
     return this.http.get<SearchResponse>(`${this.baseURL}/cards?pageSize=${pageSize}&page=${page}`, this.httpOptions)
       .pipe(
-        catchError(this.gestisciErrore<SearchResponse>("search pokemons:", undefined))
+        catchError(gestisciErrore<SearchResponse>("search pokemons:", undefined))
       );
   }
 
@@ -31,15 +32,7 @@ export class PokemonsService {
     // GET https://api.pokemontcg.io/v2/cards/dp3-1
     return this.http.get<CardResponse>(`${this.baseURL}/cards/${codice}`, this.httpOptions)
       .pipe(
-        catchError(this.gestisciErrore<CardResponse>("getById pokemons:", undefined))
+        catchError(gestisciErrore<CardResponse>("getById pokemons:", undefined))
       );
-  }
-
-  gestisciErrore<T>(operazione: string, risultato?: T) {
-    return (error: HttpErrorResponse): Observable<T> => {
-      console.log(operazione, error.message);
-
-      return of(risultato as T);
-    }
   }
 }
