@@ -40,4 +40,12 @@ export class AuthService {
 
     return null;
   }
+
+  get isUserLogged(): boolean {
+    return this.getLoggedUser() != null;
+  }
+
+  logout() {
+    localStorage.removeItem("user");
+  }
 }
