@@ -29,4 +29,5 @@
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="!laForm.form.valid">Registrati</button>
   </form>
+  <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
 </div>

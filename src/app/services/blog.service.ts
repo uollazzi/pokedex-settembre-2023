@@ -16,12 +16,6 @@ export class BlogService {
     private authService: AuthService
   ) { }
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
-    })
-  };
-
   // getArticoli(): Observable<Articolo[]> {
   //   return this.http.get<Articolo[]>(environment.JSON_SERVER_BASE_URL + "/articoli", this.httpOptions)
   //     .pipe(
@@ -37,11 +31,16 @@ export class BlogService {
   // }
 
   getArticoli(): Observable<Articolo[]> {
-    return this.http.get<Articolo[]>(environment.JSON_SERVER_BASE_URL + "/articoli", this.httpOptions)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
+      })
+    }
+
+    return this.http.get<Articolo[]>(environment.JSON_SERVER_BASE_URL + "/articoli", httpOptions)
       .pipe(
-        tap({
-          error: (e: HttpErrorResponse) => console.error(e.error)
-        })
+        // tap(articoli => console.log(articoli.length + " articoli ricevuti dal server.")),
+        tap({ error: (e: HttpErrorResponse) => console.error("SERVIZIO:", e.message) })
       )
   }
 }

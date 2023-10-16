@@ -18,29 +18,35 @@ export class ArticoliListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.bs.getArticoli().subscribe(articoli => {
-    //   if (articoli instanceof Error) {
-    //     console.error("ERRORE:", articoli);
-    //   } else {
-    //     console.log(articoli)
+    // alternativa 2
+    // this.bs.getArticoli().subscribe({
+    //   next: articoli => {
+    //     this.articoli = articoli;
+    //   },
+    //   error: (err: HttpErrorResponse) => {
+    //     if (err.status == 401) {
+    //       this.errorMessage = "Non si dispone delle autorizzazioni necessarie per visualizzare gli articoli: " + err.error;
+    //     } else {
+    //       this.errorMessage = "Errore nel caricamento degli articoli";
+    //     }
     //   }
     // });
 
-    // this.bs.getArticoli()
-    //   .pipe(
-    //     catchError((err: HttpErrorResponse) => {
-    //       this.errorMessage = err.error;
+    // alternativa 1
+    this.bs.getArticoli()
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          if (err.status == 401) {
+            this.errorMessage = "Non si dispone delle autorizzazioni necessarie per visualizzare gli articoli: " + err.error;
+          } else {
+            this.errorMessage = "Errore nel caricamento degli articoli";
+          }
 
-    //       return of([])
-    //     })
-    //   )
-    //   .subscribe(articoli => {
-    //     this.articoli = articoli;
-    //   });
-
-    this.bs.getArticoli().subscribe({
-      next: articoli => this.articoli = articoli,
-      error: (err: HttpErrorResponse) => this.errorMessage = err.error
-    })
+          return of([] as Articolo[]);
+        })
+      )
+      .subscribe(articoli => {
+        this.articoli = articoli;
+      })
   }
 }

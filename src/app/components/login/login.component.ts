@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginDTO } from 'src/app/models/auth';
+import { catchError, of } from 'rxjs';
+import { LoggedUser, LoginDTO } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   model = new LoginDTO();
+  errorMessage = "";
 
   constructor(
     private authService: AuthService,
@@ -19,13 +22,19 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.login(this.model).subscribe(loggedUser => {
-      if (!loggedUser) {
-        console.log("ERRORE DURANTE IL LOGIN");
-      } else {
-        this.authService.setLoggedUser(loggedUser);
-        this.router.navigate([""]);
-      }
-    });
+    this.authService.login(this.model)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          this.errorMessage = err.error;
+
+          return of(undefined);
+        })
+      )
+      .subscribe(loggedUser => {
+        if (loggedUser) {
+          this.authService.setLoggedUser(loggedUser);
+          this.router.navigate([""]);
+        }
+      });
   }
 }
