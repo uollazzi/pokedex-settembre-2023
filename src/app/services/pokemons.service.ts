@@ -16,7 +16,7 @@ export class PokemonsService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      "X-Api-Key": environment.POKEMON_SERVER_API_KEY
+      "X-Api-Key": environment.POKEMON_SERVER_API_KEY,
     })
   };
 

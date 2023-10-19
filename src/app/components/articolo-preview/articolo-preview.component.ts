@@ -14,6 +14,8 @@ export class ArticoloPreviewComponent {
   onRichiestaCancellazione = new EventEmitter<number>();
 
   elimina() {
-    this.onRichiestaCancellazione.emit(this.articolo!.id);
+    if (confirm("Sei sicuro di voler eliminare l'articolo?")) {
+      this.onRichiestaCancellazione.emit(this.articolo!.id);
+    }
   }
 }

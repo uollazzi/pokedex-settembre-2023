@@ -2,9 +2,9 @@
 <form #laForm="ngForm" class="auth" (ngSubmit)="aggiungiArticolo()" *ngIf="model">
   <mat-form-field appearance="fill">
     <mat-label>Titolo</mat-label>
-    <input #title="ngModel" required [(ngModel)]="model.title" type="text" matInput name="title"
+    <input #inputTitle="ngModel" required [(ngModel)]="model.title" type="text" matInput name="title"
       placeholder="Titolo...">
-    <mat-error *ngIf="title.hasError('required')">
+    <mat-error *ngIf="inputTitle.hasError('required')">
       Titolo obbligatorio
     </mat-error>
   </mat-form-field>
@@ -20,14 +20,18 @@
     <mat-label>Pokemon</mat-label>
     <mat-select name="pokemonId" [(ngModel)]="model.pokemonId">
       <mat-option *ngFor="let p of pokemons" [value]="p.id">
-        {{p.name}}
+        {{p.name}} - {{p.subtypes[0]}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <!-- <select name="pokemonId" [(ngModel)]="model.pokemonId">
+    <option *ngFor="let p of pokemons" [value]="p.id">{{p.name}} - {{p.subtypes[0]}}</option>
+
+  </select> -->
+
+
   <mat-checkbox #published="ngModel" name="published" [(ngModel)]="model.published">Pubblicato</mat-checkbox>
-  <button mat-raised-button color="primary" type="submit" [disabled]="!laForm.form.valid">Aggiungi</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!laForm.valid">Aggiungi</button>
 </form>
 <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
-<pre>
-  {{model | json}}
-</pre>

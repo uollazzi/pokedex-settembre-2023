@@ -31,13 +31,13 @@ export class BlogService {
   // }
 
   getArticoli(): Observable<Articolo[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
-      })
-    }
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
+    //   })
+    // }
 
-    return this.http.get<Articolo[]>(environment.JSON_SERVER_BASE_URL + "/articoli", httpOptions)
+    return this.http.get<Articolo[]>(environment.JSON_SERVER_BASE_URL + "/articoli")
       .pipe(
         // tap(articoli => console.log(articoli.length + " articoli ricevuti dal server.")),
         tap({
@@ -48,32 +48,32 @@ export class BlogService {
   }
 
   nuovoArticolo(model: NuovoArticoloDto): Observable<Articolo> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
-      })
-    }
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
+    //   })
+    // }
 
-    return this.http.post<Articolo>(environment.JSON_SERVER_BASE_URL + "/articoli", model, httpOptions);
+    return this.http.post<Articolo>(environment.JSON_SERVER_BASE_URL + "/articoli", model);
   }
 
   getArticoloById(id: number): Observable<Articolo> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
-      })
-    }
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
+    //   })
+    // }
 
-    return this.http.get<Articolo>(environment.JSON_SERVER_BASE_URL + "/articoli/" + id, httpOptions);
+    return this.http.get<Articolo>(environment.JSON_SERVER_BASE_URL + "/articoli/" + id);
   }
 
   deleteArticoloById(id: number): Observable<Articolo> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
-      })
-    }
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Authorization": "Bearer " + this.authService.getLoggedUser()?.accessToken
+    //   })
+    // }
 
-    return this.http.delete<Articolo>(environment.JSON_SERVER_BASE_URL + "/articoli/" + id, httpOptions);
+    return this.http.delete<Articolo>(environment.JSON_SERVER_BASE_URL + "/articoli/" + id);
   }
 }
