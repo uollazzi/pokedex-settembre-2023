@@ -10,6 +10,7 @@ import { PokemonsService } from 'src/app/services/pokemons.service';
 export class PokemonsListComponent implements OnInit {
   pokemons: Pokemon[] = [];
   currentPage = 0;
+  searchTerm = "C";
 
   constructor(private ps: PokemonsService) {
 
@@ -20,10 +21,11 @@ export class PokemonsListComponent implements OnInit {
   }
 
   search() {
-    this.ps.search(3, this.currentPage + 1).subscribe(dati => {
-      this.pokemons.push(...dati.data);
-      this.currentPage = dati.page;
-    });
+    this.ps.search(20, this.currentPage + 1)
+      .subscribe(dati => {
+        this.pokemons = this.pokemons.concat(dati.data);
+        this.currentPage = dati.page;
+      });
   }
 
   somma(n1: number, n2: number) {

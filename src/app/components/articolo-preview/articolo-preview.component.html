@@ -1,9 +1,10 @@
 <mat-card *ngIf="articolo">
   <mat-card-content>
-    {{articolo.title}}
+    {{articolo.title | uppercase}}
   </mat-card-content>
   <mat-card-actions>
     <a mat-button [routerLink]="['/blog', articolo.id]">Vai al dettaglio</a>
+    <button mat-button color="primary">Modifica</button>
     <button mat-button color="warn" (click)="elimina()">Elimina</button>
   </mat-card-actions>
 </mat-card>
