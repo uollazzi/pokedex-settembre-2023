@@ -1,16 +1,20 @@
 <mat-card *ngIf="articolo">
   <mat-card-header>
     <mat-card-title>
-      {{articolo.title}}
+      {{ articolo.title }}
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <p>
-      {{articolo.text}}
+      {{ articolo.text }}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button *ngIf="articolo.pokemonId" [routerLink]="['/pokemons', articolo.pokemonId]">
+    <a
+      mat-button
+      *ngIf="articolo.pokemonId"
+      [routerLink]="['/pokemons', articolo.pokemonId]"
+    >
       Val al Pokemon
     </a>
   </mat-card-actions>

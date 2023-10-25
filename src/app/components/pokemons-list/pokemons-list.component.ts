@@ -10,7 +10,7 @@ import { PokemonsService } from 'src/app/services/pokemons.service';
 export class PokemonsListComponent implements OnInit {
   pokemons: Pokemon[] = [];
   currentPage = 0;
-  searchTerm = "C";
+  searchTerm = "A";
 
   constructor(private ps: PokemonsService) {
 

@@ -1,13 +1,18 @@
 <h1>Lista Articoli</h1>
 
 <mat-error>
-  {{errorMessage}}
+  {{ errorMessage }}
 </mat-error>
 
 <ng-container *ngIf="articoli.length > 0">
   <p>Lista articoli aggiornata ad oggi</p>
-  <app-articolo-preview *ngFor="let a of articoli" [articolo]="a"
-    (onRichiestaCancellazione)="elimina($event)"></app-articolo-preview>
+  <app-articolo-preview
+    *ngFor="let a of articoli"
+    [articolo]="a"
+    (onRichiestaCancellazione)="elimina($event)"
+    (onRichiestaPubblicazione)="pubblica($event)"
+  >
+  </app-articolo-preview>
 </ng-container>
 
 <ng-container *ngIf="articoli.length == 0">

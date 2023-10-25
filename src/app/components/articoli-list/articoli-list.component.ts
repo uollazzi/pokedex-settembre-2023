@@ -8,15 +8,13 @@ import { BlogService } from 'src/app/services/blog.service';
 @Component({
   selector: 'app-articoli-list',
   templateUrl: './articoli-list.component.html',
-  styleUrls: ['./articoli-list.component.css']
+  styleUrls: ['./articoli-list.component.css'],
 })
 export class ArticoliListComponent implements OnInit {
   articoli: Articolo[] = [];
-  errorMessage = "";
+  errorMessage = '';
 
-  constructor(private bs: BlogService, private snackBar: MatSnackBar) {
-
-  }
+  constructor(private bs: BlogService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getArticoli();
@@ -38,26 +36,36 @@ export class ArticoliListComponent implements OnInit {
     // });
 
     // alternativa 1
-    this.bs.getArticoli()
+    this.bs
+      .getArticoli()
       .pipe(
         catchError((err: HttpErrorResponse) => {
           if (err.status == 401) {
-            this.errorMessage = "Non si dispone delle autorizzazioni necessarie per visualizzare gli articoli: " + err.error;
+            this.errorMessage =
+              'Non si dispone delle autorizzazioni necessarie per visualizzare gli articoli: ' +
+              err.error;
           } else {
-            this.errorMessage = "Errore nel caricamento degli articoli";
+            this.errorMessage = 'Errore nel caricamento degli articoli';
           }
 
           return of([] as Articolo[]);
         })
       )
-      .subscribe(articoli => {
+      .subscribe((articoli) => {
         this.articoli = articoli;
-      })
+      });
   }
 
   elimina(id: number) {
-    this.bs.deleteArticoloById(id).subscribe(articolo => {
-      this.snackBar.open("Articolo eliminato con successo", "OK");
+    this.bs.deleteArticoloById(id).subscribe((articolo) => {
+      this.snackBar.open('Articolo eliminato con successo', 'OK');
+      this.getArticoli();
+    });
+  }
+
+  pubblica(id: number) {
+    this.bs.publishArticoloById(id).subscribe((articolo) => {
+      this.snackBar.open('Articolo pubblicato con successo', 'OK');
       this.getArticoli();
     });
   }

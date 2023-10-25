@@ -10,6 +10,7 @@ import { ArticoloAddComponent } from './components/articolo-add/articolo-add.com
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { loggedGuard } from './guards/logged.guard';
+import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.component';
 
 const routes: Routes = [
   // {
@@ -38,9 +39,18 @@ const routes: Routes = [
     path: "blog",
     component: BlogComponent,
     children: [
-      { path: "", component: ArticoliListComponent },
-      { path: "nuovo", component: ArticoloAddComponent },
-      { path: ":id", component: ArticoloDetailComponent }
+      {
+        path: "", component: ArticoliListComponent
+      },
+      {
+        path: "nuovo", component: ArticoloAddComponent
+      },
+      {
+        path: ":id", component: ArticoloDetailComponent
+      },
+      {
+        path: "modifica/:id", component: ArticoloEditComponent
+      },
     ],
     canActivate: [loggedGuard]
   },

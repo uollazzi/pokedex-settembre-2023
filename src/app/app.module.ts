@@ -34,6 +34,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { InizialiPipe } from './pipes/iniziali.pipe';
 import { StartsWithPipe } from './pipes/starts-with.pipe';
+import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { StartsWithPipe } from './pipes/starts-with.pipe';
     LoginComponent,
     RegisterComponent,
     InizialiPipe,
-    StartsWithPipe
+    StartsWithPipe,
+    ArticoloEditComponent
   ],
   imports: [
     BrowserModule,
