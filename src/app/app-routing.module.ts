@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { loggedGuard } from './guards/logged.guard';
 import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.component';
+import { TitleEditorComponent } from './components/title-editor/title-editor.component';
+import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 
 const routes: Routes = [
   // {
@@ -26,6 +28,12 @@ const routes: Routes = [
   },
   {
     path: "register", component: RegisterComponent
+  },
+  {
+    path: "title-editor", component: TitleEditorComponent
+  },
+  {
+    path: "profile-editor", component: ProfileEditorComponent
   },
   {
     path: "pokemons",

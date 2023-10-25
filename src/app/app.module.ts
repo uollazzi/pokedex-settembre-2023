@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PokemonsListComponent } from './components/pokemons-list/pokemons-list.component';
@@ -35,6 +36,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { InizialiPipe } from './pipes/iniziali.pipe';
 import { StartsWithPipe } from './pipes/starts-with.pipe';
 import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.component';
+import { TitleEditorComponent } from './components/title-editor/title-editor.component';
+import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 
 @NgModule({
   declarations: [
@@ -53,13 +56,16 @@ import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.
     RegisterComponent,
     InizialiPipe,
     StartsWithPipe,
-    ArticoloEditComponent
+    ArticoloEditComponent,
+    TitleEditorComponent,
+    ProfileEditorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatIconModule,
@@ -70,7 +76,8 @@ import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.
     MatFormFieldModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

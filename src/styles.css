@@ -23,7 +23,7 @@ body {
   height: 80vh;
 }
 
-form.auth {
+.auth {
   width: 400px;
   display: flex;
   flex-direction: column;
