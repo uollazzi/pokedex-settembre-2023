@@ -13,6 +13,7 @@ import { loggedGuard } from './guards/logged.guard';
 import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.component';
 import { TitleEditorComponent } from './components/title-editor/title-editor.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
+import { ProfileEditorBuilderComponent } from './components/profile-editor-builder/profile-editor-builder.component';
 
 const routes: Routes = [
   // {
@@ -34,6 +35,9 @@ const routes: Routes = [
   },
   {
     path: "profile-editor", component: ProfileEditorComponent
+  },
+  {
+    path: "profile-editor-builder", component: ProfileEditorBuilderComponent
   },
   {
     path: "pokemons",

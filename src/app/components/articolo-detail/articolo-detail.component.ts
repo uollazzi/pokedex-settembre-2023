@@ -18,8 +18,9 @@ export class ArticoloDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get("id"));
 
-    this.bs.getArticoloById(id).subscribe(articolo => {
-      this.articolo = articolo;
-    })
+    this.bs.getArticoloById(id)
+      .subscribe(articolo => {
+        this.articolo = articolo;
+      })
   }
 }

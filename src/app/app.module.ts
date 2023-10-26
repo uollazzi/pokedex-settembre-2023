@@ -38,6 +38,7 @@ import { StartsWithPipe } from './pipes/starts-with.pipe';
 import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.component';
 import { TitleEditorComponent } from './components/title-editor/title-editor.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
+import { ProfileEditorBuilderComponent } from './components/profile-editor-builder/profile-editor-builder.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ProfileEditorComponent } from './components/profile-editor/profile-edit
     StartsWithPipe,
     ArticoloEditComponent,
     TitleEditorComponent,
-    ProfileEditorComponent
+    ProfileEditorComponent,
+    ProfileEditorBuilderComponent
   ],
   imports: [
     BrowserModule,

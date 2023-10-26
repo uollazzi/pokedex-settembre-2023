@@ -23,13 +23,17 @@ export class ProfileEditorComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // this.profileForm.valueChanges.subscribe(value => {
-    //   console.log("VALORE:", value);
-    // });
+    this.profileForm.valueChanges
+      .subscribe(this.logValore);
 
-    // this.profileForm.statusChanges.subscribe(status => {
-    //   console.log("STATO:", status);
-    // });
+    this.profileForm.statusChanges
+      .subscribe(status => {
+        console.log("STATO:", status);
+      });
+  }
+
+  logValore(valore: any) {
+    console.log(valore);
   }
 
   salva() {
