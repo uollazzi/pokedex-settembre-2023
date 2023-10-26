@@ -30,6 +30,10 @@ export class ProfileEditorBuilderComponent implements OnInit {
     return this.profileForm.get("age")!;
   }
 
+  get firstNameFormControl() {
+    return this.profileForm.get("firstName")!;
+  }
+
   ngOnInit(): void {
     this.profileForm.valueChanges
       .subscribe(value => {
@@ -51,7 +55,13 @@ export class ProfileEditorBuilderComponent implements OnInit {
 
 
   salva() {
-    console.log(this.profileForm.value);
+    console.log("Valore:", this.profileForm.value);
+    console.log("Form valida:", this.profileForm.valid);
+    console.log("Errore required in firstName:", this.profileForm.controls["firstName"].hasError("required"));
+
+    if (this.profileForm.valid) {
+      // chiamata AJAX
+    }
   }
 
   salvaTemplate() {

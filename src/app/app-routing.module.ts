@@ -14,6 +14,7 @@ import { ArticoloEditComponent } from './components/articolo-edit/articolo-edit.
 import { TitleEditorComponent } from './components/title-editor/title-editor.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 import { ProfileEditorBuilderComponent } from './components/profile-editor-builder/profile-editor-builder.component';
+import { LoginReactiveComponent } from './components/login-reactive/login-reactive.component';
 
 const routes: Routes = [
   // {
@@ -25,7 +26,7 @@ const routes: Routes = [
   //   component: PokemonDetailComponent
   // },
   {
-    path: "login", component: LoginComponent
+    path: "login", component: LoginReactiveComponent
   },
   {
     path: "register", component: RegisterComponent

@@ -4,6 +4,9 @@
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
       <input matInput formControlName="firstName" />
+      <mat-error *ngIf="firstNameFormControl.hasError('required')"
+        >RICHIESTO</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -49,9 +52,7 @@
       </mat-form-field>
     </div>
 
-    <button color="accent" mat-flat-button [disabled]="profileForm.invalid">
-      Invia
-    </button>
+    <button color="accent" mat-flat-button>Invia</button>
   </form>
   <p>Form Valida: {{ profileForm.valid }}</p>
   <pre>
