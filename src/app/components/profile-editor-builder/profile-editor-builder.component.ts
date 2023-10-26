@@ -11,11 +11,11 @@ export class ProfileEditorBuilderComponent implements OnInit {
   model = new Profile();
 
   profileForm = this.fb.group({
-    firstName: ["", Validators.required],
+    firstName: ["", [Validators.required]],
     lastName: [""],
     gender: ["m"],
     active: [true],
-    age: [76],
+    age: [76, [Validators.required, Validators.min(18)]],
     address: this.fb.group({
       street: [""],
       city: [""],
@@ -37,9 +37,9 @@ export class ProfileEditorBuilderComponent implements OnInit {
         this.ageFormControl.clearValidators();
 
         if (value.gender == "m") {
-          this.ageFormControl.addValidators([Validators.max(40)]);
+          this.ageFormControl.addValidators([Validators.required, Validators.min(18), Validators.max(40)]);
         } else {
-          this.ageFormControl.addValidators([Validators.max(20)]);
+          this.ageFormControl.addValidators([Validators.required, Validators.min(18), Validators.max(20)]);
         }
       });
 
