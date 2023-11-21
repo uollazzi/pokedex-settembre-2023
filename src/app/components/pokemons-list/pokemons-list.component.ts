@@ -18,6 +18,7 @@ export class PokemonsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.search();
+
   }
 
   search() {
